@@ -1,0 +1,14 @@
+{
+  "schema_version": "ResearchConsole-GitHubPages-manifest-0.1",
+  "snapshot_id": "ws_93c99c79eb944bd3f94be22d",
+  "snapshot_content_sha256": "51a6232ad561153e17a3873446d66df73dcf54e68255d24636470a0796b98afb",
+  "generated_at": "2026-08-14T23:32:37+08:00",
+  "derived": true,
+  "authoritative": false,
+  "production_mutation": false,
+  "access_mode": "public",
+  "company_ids": [
+    "co_000002",
+    "co_000004"
+  ]
+}
