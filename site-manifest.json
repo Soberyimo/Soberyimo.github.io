@@ -1,8 +1,8 @@
 {
   "schema_version": "ResearchOS-DataPlatformPages-manifest-0.1",
   "snapshot_id": "dps_df0893913e48f4d3f1c9f018",
-  "snapshot_content_sha256": "2f637d7523e62518d7db0c16ccfd88814fae2b9d43d85f27204ec8afd7235500",
-  "generated_at": "2026-08-16T20:04:16+08:00",
+  "snapshot_content_sha256": "f19eadca0572e1cffb0cdd9332916becf03b0f0f266bc27bb4e342eec8d0fda7",
+  "generated_at": "2026-08-16T20:38:56+08:00",
   "derived": true,
   "authoritative": false,
   "production_mutation": false,
