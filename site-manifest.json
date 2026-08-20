@@ -1,28 +1,26 @@
 {
-  "schema_version": "ResearchOS-DataPlatformPages-manifest-0.1",
-  "snapshot_id": "dps_62760a62aa3181b8504725f2",
-  "snapshot_content_sha256": "b07a318962cfdaf7a325500df164c34a7e28197a0a9948bfa1d137870e87d0c4",
-  "generated_at": "2026-08-16T21:46:37+08:00",
-  "derived": true,
+  "schema_version": "Yunjian-VisualizerPages-1",
+  "snapshot_content_sha256": "a867497939a6b7b8a35904f29dd7cdde232353eb683c28922a3210b39e9e2bc8",
+  "input_sha256": "293c7f88665dc2c9626a54fb8acb4d50f811848aaecdaab5f35a3dc4e5020537",
   "authoritative": false,
   "production_mutation": false,
-  "access_mode": "public",
-  "company_ids": [
-    "co_000001",
-    "co_000002",
-    "co_000003",
-    "co_000004",
-    "co_000005",
-    "co_000006"
+  "company_slugs": [
+    "company-27747e102ec1",
+    "company-42a64c68a4a9",
+    "company-60094bcf5292",
+    "company-6f1a9695e1b7",
+    "company-d15ff95eec38",
+    "company-d3c20bd56530",
+    "seres"
   ],
   "routes": [
     "/",
-    "/earnings/",
-    "/company/co_000001/",
-    "/company/co_000002/",
-    "/company/co_000003/",
-    "/company/co_000004/",
-    "/company/co_000005/",
-    "/company/co_000006/"
+    "/company/company-27747e102ec1/",
+    "/company/company-42a64c68a4a9/",
+    "/company/company-60094bcf5292/",
+    "/company/company-6f1a9695e1b7/",
+    "/company/company-d15ff95eec38/",
+    "/company/company-d3c20bd56530/",
+    "/company/seres/"
   ]
 }
