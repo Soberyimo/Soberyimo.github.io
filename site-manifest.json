@@ -1,9 +1,10 @@
 {
   "schema_version": "Yunjian-VisualizerPages-1",
-  "snapshot_content_sha256": "ec4ad2dcdc9e90164d1eb3995b6dbbe310e1020a7ca1639fcd40209264f8e38a",
-  "input_sha256": "283a1fa187985d2968d54725f7053628b569c45615e496b590ee3bd7a22006f9",
+  "snapshot_content_sha256": "d695fa9719ae5f755fcbcd1547eccd0e717fe68cceb63bd06a06bab72e37b763",
+  "input_sha256": "f0cb345fffc506e94dad920fe2760211ae5ef68b7438d11e213023b65c17b0c8",
   "authoritative": false,
   "production_mutation": false,
+  "base_path": "",
   "company_slugs": [
     "company-27747e102ec1",
     "company-42a64c68a4a9",

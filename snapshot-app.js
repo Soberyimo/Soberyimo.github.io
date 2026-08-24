@@ -17,6 +17,7 @@
     const selector = widget.querySelector('.chart-series');
     const unitNode = widget.querySelector('.chart-unit');
     const legendNode = widget.querySelector('.chart-legend');
+    const singleNode = widget.querySelector('.chart-single-value');
     const summaryBody = widget.closest('.data-section')?.querySelector('.key-data-body');
     const summaryChangeHead = widget.closest('.data-section')?.querySelector('.summary-change-head');
     let chartPoints = [];
@@ -42,7 +43,8 @@
     function showTooltip(point) {
       const node = ensureTooltip();
       if (!node || !chart || !activeSeries) return;
-      node.textContent = `${point.record.period}\n${activeSeries.label}：${formatValue(point.value, activeSeries.display_unit || activeSeries.unit)}`;
+      const breakNote = activeSeries.series_break_note ? `\n口径提示：${activeSeries.series_break_note}` : '';
+      node.textContent = `${point.record.period}\n${activeSeries.label}：${formatValue(point.value, activeSeries.display_unit || activeSeries.unit)}${breakNote}`;
       node.hidden = false;
       node.classList.add('is-visible');
       const chartRect = chart.getBoundingClientRect();
@@ -88,9 +90,11 @@
       const series = seriesList.find((item) => item.series_id === selector.value);
       if (!series) return;
       activeSeries = series;
+      const fullRecords = series.records || [];
+      const chartRecords = fullRecords.slice(-Math.max(1, Number(series.chart_window) || 8));
       if (summaryBody) {
         summaryBody.replaceChildren();
-        const visibleRows = [...series.records].reverse().slice(0, 6);
+        const visibleRows = [...fullRecords].reverse().slice(0, 6);
         const hasComparison = visibleRows.some((row) => row.yoy !== null && row.yoy !== undefined || row.yoy_pp !== null && row.yoy_pp !== undefined);
         if (summaryChangeHead) summaryChangeHead.hidden = !hasComparison;
         visibleRows.forEach((row) => {
@@ -120,6 +124,26 @@
           summaryBody.append(tr);
         });
       }
+      if (chartRecords.length === 1) {
+        chart.hidden = true;
+        if (singleNode) {
+          singleNode.replaceChildren();
+          const label = document.createElement('small');
+          label.textContent = chartRecords[0].display_period || chartRecords[0].period;
+          const value = document.createElement('strong');
+          value.textContent = formatValue(Number(chartRecords[0].value), series.display_unit || series.unit);
+          const note = document.createElement('span');
+          note.textContent = '当前仅有一期可比数据';
+          singleNode.append(label, value, note);
+          singleNode.hidden = false;
+        }
+        if (unitNode) unitNode.textContent = `单位：${series.display_unit || series.unit}`;
+        if (legendNode) legendNode.textContent = `${series.label} · 当前仅有一期可比数据${series.series_break_note ? ` · ${series.series_break_note}` : ''}`;
+        chart.setAttribute('aria-label', `${series.label}单值`);
+        return;
+      }
+      chart.hidden = false;
+      if (singleNode) singleNode.hidden = true;
       const rect = chart.getBoundingClientRect();
       const scale = Math.min(window.devicePixelRatio || 1, 2);
       const width = Math.max(320, rect.width);
@@ -130,7 +154,7 @@
       ctx.scale(scale, scale);
       ctx.clearRect(0, 0, width, height);
       const pad = { left: 66, right: 52, top: 22, bottom: 48 };
-      const values = series.records.map((row) => Number.isFinite(Number(row.value)) ? Number(row.value) : null);
+      const values = chartRecords.map((row) => Number.isFinite(Number(row.value)) ? Number(row.value) : null);
       const actual = values.filter((value) => value !== null);
       if (!actual.length) return;
       let min = Math.min(...actual), max = Math.max(...actual);
@@ -153,7 +177,7 @@
         ctx.stroke();
         ctx.fillText(Math.abs(value) >= 1000 ? value.toLocaleString(undefined, { maximumFractionDigits: 0 }) : value.toFixed(1), 4, yy + 4);
       }
-      series.records.forEach((row, index) => {
+      chartRecords.forEach((row, index) => {
         ctx.fillStyle = '#68716c';
         ctx.textAlign = 'center';
         ctx.fillText(row.display_period || row.period, x(index), height - 20);
@@ -172,7 +196,7 @@
       });
       values.forEach((value, index) => {
         if (value === null) return;
-        const point = { x: x(index), y: y(value), value, record: series.records[index] };
+        const point = { x: x(index), y: y(value), value, record: chartRecords[index] };
         chartPoints.push(point);
         ctx.beginPath();
         ctx.arc(point.x, point.y, 4, 0, Math.PI * 2);
@@ -183,7 +207,9 @@
         ctx.stroke();
       });
       if (unitNode) unitNode.textContent = `单位：${series.display_unit || series.unit}`;
-      if (legendNode) legendNode.textContent = `${series.label} · 悬停或点击数据点查看数值 · 不跨频率连线`;
+      const cardinality = chartRecords.length === 2 ? '两期比较（不称为趋势）' : `最近 ${chartRecords.length} 期趋势`;
+      if (legendNode) legendNode.textContent = `${series.label} · ${cardinality} · 悬停或点击数据点查看数值 · 不跨频率连线${series.series_break_note ? ` · ${series.series_break_note}` : ''}`;
+      chart.setAttribute('aria-label', `${series.label}${chartRecords.length === 2 ? '两期比较' : '趋势图'}`);
     }
 
     selector?.addEventListener('change', drawChart);
