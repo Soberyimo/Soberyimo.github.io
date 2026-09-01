@@ -86,6 +86,23 @@
       chartPoints = [];
       activeSeries = null;
       if (!chart || !selector || !pageData) return;
+      const previousContext = chart.getContext('2d');
+      if (previousContext) previousContext.clearRect(0, 0, chart.width, chart.height);
+      chart.hidden = true;
+      if (singleNode) {
+        singleNode.replaceChildren();
+        singleNode.hidden = true;
+      }
+      if (legendNode) {
+        legendNode.replaceChildren();
+        legendNode.hidden = true;
+      }
+      if (unitNode) unitNode.textContent = '';
+      if (tooltip) {
+        tooltip.textContent = '';
+        tooltip.style.left = '';
+        tooltip.style.top = '';
+      }
       const seriesList = pageData.series_groups?.[group] || [];
       const series = seriesList.find((item) => item.series_id === selector.value);
       if (!series) return;
@@ -138,12 +155,12 @@
           singleNode.hidden = false;
         }
         if (unitNode) unitNode.textContent = `单位：${series.display_unit || series.unit}`;
-        if (legendNode) legendNode.textContent = `${series.label} · 当前仅有一期可比数据${series.series_break_note ? ` · ${series.series_break_note}` : ''}`;
         chart.setAttribute('aria-label', `${series.label}单值`);
         return;
       }
       chart.hidden = false;
       if (singleNode) singleNode.hidden = true;
+      if (legendNode) legendNode.hidden = false;
       const rect = chart.getBoundingClientRect();
       const scale = Math.min(window.devicePixelRatio || 1, 2);
       const width = Math.max(320, rect.width);

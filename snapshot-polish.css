@@ -1005,7 +1005,10 @@ footer {
   padding: 28px;
 }
 
-.chart-single-value[hidden] { display: none; }
+.trend-chart[hidden],
+.chart-legend[hidden],
+.chart-single-value[hidden],
+.chart-hover-tooltip[hidden] { display: none !important; }
 .chart-single-value small,
 .chart-single-value span { color: var(--muted); font-size: .75rem; }
 .chart-single-value strong { color: #6332ff; font-family: Georgia, serif; font-size: 2rem; margin: 10px 0 8px; }

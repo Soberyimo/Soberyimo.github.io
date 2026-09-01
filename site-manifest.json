@@ -1,27 +1,31 @@
 {
   "schema_version": "Yunjian-VisualizerPages-1",
-  "snapshot_content_sha256": "eec2bdbf79742fb9f1f26f94ee62d5aaa5a74b4b755de348c43c3f2ecb8edc17",
-  "input_sha256": "11a5a8e55989f4fd6b3187f419a9e6b849c164bd09ffa279b67c99524819cb70",
+  "snapshot_content_sha256": "92b62700a904a8478a43304dbc8e60a741e943d6a9f7b34d8921b3a1eb6b611b",
+  "input_sha256": "ff0a7a055e81ae01228600c42ed87c4cd8b36d58c71a66d0e2a292c7a9dd8496",
   "authoritative": false,
   "production_mutation": false,
   "base_path": "",
   "company_slugs": [
+    "byd",
     "company-27747e102ec1",
     "company-42a64c68a4a9",
     "company-60094bcf5292",
     "company-6f1a9695e1b7",
     "company-d15ff95eec38",
     "company-d3c20bd56530",
-    "seres"
+    "seres",
+    "tesla"
   ],
   "routes": [
     "/",
+    "/company/byd/",
     "/company/company-27747e102ec1/",
     "/company/company-42a64c68a4a9/",
     "/company/company-60094bcf5292/",
     "/company/company-6f1a9695e1b7/",
     "/company/company-d15ff95eec38/",
     "/company/company-d3c20bd56530/",
-    "/company/seres/"
+    "/company/seres/",
+    "/company/tesla/"
   ]
 }
