@@ -229,6 +229,11 @@
       chart.setAttribute('aria-label', `${series.label}${chartRecords.length === 2 ? '两期比较' : '趋势图'}`);
     }
 
+    const configuredDefault = widget.dataset.defaultSeries || pageData?.default_series_by_group?.[group];
+    const trendSeries = pageData?.series_groups?.[group] || [];
+    if (selector && configuredDefault && trendSeries.some((item) => item.series_id === configuredDefault)) {
+      selector.value = configuredDefault;
+    }
     selector?.addEventListener('change', drawChart);
     chart?.addEventListener('pointermove', handleChartPointer);
     chart?.addEventListener('pointerdown', handleChartPointer);

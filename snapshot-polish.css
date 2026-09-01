@@ -1013,6 +1013,29 @@ footer {
 .chart-single-value span { color: var(--muted); font-size: .75rem; }
 .chart-single-value strong { color: #6332ff; font-family: Georgia, serif; font-size: 2rem; margin: 10px 0 8px; }
 
+.singleton-data {
+  border-top: 1px solid var(--line);
+  margin-top: 24px;
+  padding-top: 24px;
+}
+
+.singleton-data-heading {
+  align-items: end;
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.singleton-data-heading h3 { margin: 2px 0 0; }
+.singleton-data-heading > p { color: var(--muted); font-size: .75rem; margin: 0; max-width: 580px; }
+.singleton-data-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.singleton-data-card { background: #faf9fc; border: 1px solid var(--line); border-radius: 10px; padding: 18px; }
+.singleton-data-card > small, .singleton-data-card > p { color: var(--muted); display: block; font-size: .72rem; margin: 0; }
+.singleton-data-card > strong { color: var(--ink); display: block; font-family: Georgia, serif; font-size: 1.35rem; margin: 9px 0 6px; }
+.singleton-data-card > strong span { color: var(--muted); font-family: inherit; font-size: .78rem; }
+.singleton-data-card .row-source { margin-top: 12px; }
+
 .all-data-details,
 .methodology-notes > details {
   background: var(--paper);
