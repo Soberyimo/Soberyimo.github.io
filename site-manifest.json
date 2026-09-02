@@ -1,7 +1,7 @@
 {
   "schema_version": "Yunjian-VisualizerPages-1",
-  "snapshot_content_sha256": "f552f43fb556c7286e0f6948945f703822d8e41d3342a1ba00705930e1d926e3",
-  "input_sha256": "52f1692f71af2c9ee33071b3a004cbc881de9cea65baf7bac56909c30f30e4b1",
+  "snapshot_content_sha256": "0692177b35b37c16422b64791d9339e1422db88c3959bca55cb561560a2515c4",
+  "input_sha256": "256066ca1bff50420285e661f9b2fa991896c37946ced5e48f0e4b16411775fb",
   "authoritative": false,
   "production_mutation": false,
   "base_path": "",
